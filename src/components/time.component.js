@@ -8,28 +8,23 @@ export default class Time extends Component {
       seconds: this.props.seconds,
       startTime: null
     }
-    this.updateTime=this.updateTime.bind(this);
+    this.updateSeconds=this.updateSeconds.bind(this);
   }
 
-
-
-  componentDidMount() {
-    this.startTime()
-  }
+  // componentDidMount() {
+  //   this.startTime()
+  // }
 
   startTime() {
     this.setState({
       startTime: new Date()
     })
-    setInterval(this.updateTime, 1000);
+    setInterval(this.updateSeconds, 1000);
   }
 
-  updateTime() {
+  updateSeconds() {
     let date = new Date()
-    console.log(date.getSeconds());
-    // console.log("state: " + this.state.title);
-    console.log(this.state.startTime.getSeconds());
-    let updatedSeconds = date.getSeconds() - this.state.startTime.getSeconds();
+    let updatedSeconds = Math.round(date.getTime() / 1000) - Math.round(this.state.startTime.getTime() / 1000);
     this.setState({
       seconds: updatedSeconds
     })
@@ -41,6 +36,7 @@ export default class Time extends Component {
         <h3>
           {this.state.title} : {this.state.seconds}
         </h3>
+        <button onClick={() => { this.startTime() }}>start</button>
       </div>
     );
   }
