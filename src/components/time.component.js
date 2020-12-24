@@ -19,7 +19,7 @@ export default class Time extends Component {
     this.setState({
       startTime: new Date()
     })
-    setInterval(this.updateSeconds, 1000);
+    this.interval = setInterval(this.updateSeconds, 1000);
   }
 
   updateSeconds() {
@@ -30,6 +30,10 @@ export default class Time extends Component {
     })
   }
 
+  stopTime() {
+    clearInterval(this.interval);
+  }
+
   render() {
     return (
       <div>
@@ -37,6 +41,7 @@ export default class Time extends Component {
           {this.state.title} : {this.state.seconds}
         </h3>
         <button onClick={() => { this.startTime() }}>start</button>
+        <button onClick={() => { this.stopTime() }}>stop</button>
       </div>
     );
   }
