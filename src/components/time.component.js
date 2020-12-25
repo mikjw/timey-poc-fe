@@ -6,27 +6,25 @@ export default class Time extends Component {
     this.state = {
       title: this.props.title,
       seconds: this.props.seconds,
-      startTime: null
+      startTime: null,
+      initialSeconds: null 
     }
     this.updateSeconds=this.updateSeconds.bind(this);
+    this.startTimer=this.startTimer.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.startTime()
-  // }
-
-  startTime() {
+  startTimer() {
     this.setState({
-      startTime: new Date()
+      initialSeconds: this.state.seconds,
+      startTime: Math.round(Date.now() / 1000)
     })
     this.interval = setInterval(this.updateSeconds, 1000);
   }
 
   updateSeconds() {
-    let date = new Date()
-    let updatedSeconds = Math.round(date.getTime() / 1000) - Math.round(this.state.startTime.getTime() / 1000);
+    let secondsSinceStart = Math.round(Date.now() / 1000) - this.state.startTime;
     this.setState({
-      seconds: updatedSeconds
+      seconds: this.state.initialSeconds + secondsSinceStart
     })
   }
 
@@ -40,7 +38,7 @@ export default class Time extends Component {
         <h3>
           {this.state.title} : {this.state.seconds}
         </h3>
-        <button onClick={() => { this.startTime() }}>start</button>
+        <button onClick={() => { this.startTimer() }}>start</button>
         <button onClick={() => { this.stopTime() }}>stop</button>
       </div>
     );
