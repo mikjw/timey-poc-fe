@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 export default class Time extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: this.props.id,
       title: this.props.title,
       seconds: this.props.seconds,
       startTime: null,
@@ -11,6 +12,11 @@ export default class Time extends Component {
     }
     this.updateSeconds=this.updateSeconds.bind(this);
     this.startTimer=this.startTimer.bind(this);
+  }
+
+  componentDidMount() {
+    console.log(this.props.id)
+    console.log(this.state.id)
   }
 
   startTimer() {
@@ -30,6 +36,18 @@ export default class Time extends Component {
 
   stopTime() {
     clearInterval(this.interval);
+  }
+
+  persistSeconds() {
+    axios.post('http://localhost:5001/times/update')
+      .then(response => {
+        this.setState({ 
+          times: response.data
+        })
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }
 
   render() {

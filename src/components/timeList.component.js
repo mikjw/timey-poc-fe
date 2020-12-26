@@ -25,7 +25,7 @@ export default class TimeList extends Component {
   listTimes() {
     return this.state.times.map(el => {
       console.log(el);
-      return <Time title={el.title} seconds={el.seconds} key={el._id}/>;
+      return <Time title={el.title} seconds={el.seconds} id={el._id} key={el._id}/>;
     })
   }
 
