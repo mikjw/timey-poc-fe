@@ -8,7 +8,8 @@ export default class Time extends Component {
       title: this.props.title,
       seconds: this.props.seconds,
       startTime: null,
-      initialSeconds: null 
+      initialSeconds: null, 
+      counting: false
     }
     this.updateSeconds=this.updateSeconds.bind(this);
     this.startTimer=this.startTimer.bind(this);
@@ -20,11 +21,14 @@ export default class Time extends Component {
   }
 
   startTimer() {
-    this.setState({
-      initialSeconds: this.state.seconds,
-      startTime: Math.round(Date.now() / 1000)
-    })
-    this.interval = setInterval(this.updateSeconds, 1000);
+    if (this.state.counting === false) {
+      this.setState({
+        initialSeconds: this.state.seconds,
+        startTime: Math.round(Date.now() / 1000), 
+        counting: true
+      })
+      this.interval = setInterval(this.updateSeconds, 1000);
+    }
   }
 
   updateSeconds() {
@@ -35,8 +39,13 @@ export default class Time extends Component {
   }
 
   stopTime() {
-    clearInterval(this.interval);
-    this.persistSeconds();
+    if (this.state.counting === true) {
+      clearInterval(this.interval);
+      this.persistSeconds();
+      this.setState({
+        counting: false
+      })
+    }
   }
 
   persistSeconds() {
