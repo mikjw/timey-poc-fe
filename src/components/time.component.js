@@ -45,7 +45,7 @@ export default class Time extends Component {
       seconds: this.state.seconds
     }
     axios.post('http://localhost:5001/times/update/' + this.state.id, time)
-    .then(res => console.log(res));
+    .then(res => console.log(res.data));
   }
 
   render() {
