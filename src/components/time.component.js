@@ -36,18 +36,16 @@ export default class Time extends Component {
 
   stopTime() {
     clearInterval(this.interval);
+    this.persistSeconds();
   }
 
   persistSeconds() {
-    axios.post('http://localhost:5001/times/update')
-      .then(response => {
-        this.setState({ 
-          times: response.data
-        })
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+    const time = {
+      title: this.state.title,
+      seconds: this.state.seconds
+    }
+    axios.post('http://localhost:5001/times/update/' + this.state.id, time)
+    .then(res => console.log(res));
   }
 
   render() {
@@ -56,8 +54,8 @@ export default class Time extends Component {
         <h3>
           {this.state.title} : {this.state.seconds}
         </h3>
-        <button onClick={() => { this.startTimer() }}>start</button>
-        <button onClick={() => { this.stopTime() }}>stop</button>
+        <button onClick={() => {this.startTimer()}}>start</button>
+        <button onClick={() => {this.stopTime()}}>stop</button>
       </div>
     );
   }
