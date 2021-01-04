@@ -33,9 +33,11 @@ export default class Time extends Component {
 
   updateSeconds() {
     let secondsSinceStart = Math.round(Date.now() / 1000) - this.state.startTime;
+    let updatedSeconds = this.state.initialSeconds + secondsSinceStart
     this.setState({
-      seconds: this.state.initialSeconds + secondsSinceStart
+      seconds: updatedSeconds
     })
+    if (updatedSeconds % 5 === 0) {this.persistSeconds()}
   }
 
   stopTime() {
