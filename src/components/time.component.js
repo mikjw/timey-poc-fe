@@ -60,10 +60,13 @@ export default class Time extends Component {
   }
 
   render() {
+    let hours = ('0' + (Math.floor(this.state.seconds / 3600) % 60)).slice(-2)
+    let minutes = ('0' + (Math.floor(this.state.seconds / 60) % 60)).slice(-2)
+    let seconds = ('0' + (this.state.seconds % 60)).slice(-2)
     return (
       <div>
         <h3>
-          {this.state.title} : {this.state.seconds}
+          {this.state.title}  {hours}:{minutes}:{seconds}
         </h3>
         <button onClick={() => {this.startTimer()}}>start</button>
         <button onClick={() => {this.stopTime()}}>stop</button>
