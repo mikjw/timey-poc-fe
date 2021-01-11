@@ -65,9 +65,9 @@ export default class Time extends Component {
     let seconds = ('0' + (this.state.seconds % 60)).slice(-2)
     return (
       <div>
-        <h3>
+        <p>
           {this.state.title}  {hours}:{minutes}:{seconds}
-        </h3>
+        </p>
         <button onClick={() => {this.startTimer()}}>start</button>
         <button onClick={() => {this.stopTime()}}>stop</button>
       </div>
