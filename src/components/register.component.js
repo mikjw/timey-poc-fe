@@ -39,7 +39,7 @@ export default class Register extends Component {
           <label> Email: </label> 
             <input type="text" name="email" value={this.state.email} onChange={this.onChangeEmail} />
           <label> Password: </label> 
-            <input type="text" name="password" value={this.state.password} onChange={this.onChangePassword} /> 
+            <input type="password" name="password" value={this.state.password} onChange={this.onChangePassword} /> 
           <button onClick={() => {this.submitForm()}}>Submit</button>
       </div>
     );
