@@ -12,13 +12,13 @@
 }
 
 .Time-title {
-  font-size: calc(14px);
+  font-size: 14px;
   color: rgb(66, 65, 65);
 }
 
 .Time-display {
   margin: 2px;
-  font-size: calc(22px);
+  font-size: 22px;
   color: rgb(66, 65, 65);
 }
 
