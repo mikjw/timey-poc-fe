@@ -1,0 +1,40 @@
+.Time-container {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  border-style: solid;
+  border-color: black;
+  border-radius: 10px;
+  border-width: 2px;
+  margin: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 16vmin;
+}
+
+.Time-title {
+  font-size: calc(14px);
+  color: rgb(66, 65, 65);
+}
+
+.Time-display {
+  margin: 2px;
+  font-size: calc(22px);
+  color: rgb(66, 65, 65);
+}
+
+.Button-container {
+  margin: 5px;
+}
+
+.Time-button {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  background-color: transparent;
+  margin: 2px;
+  padding: 5px 10px 5px 10px;
+  font-size: 11px;
+  color: rgb(66, 65, 65);
+}
+
+
