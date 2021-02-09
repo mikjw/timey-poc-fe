@@ -1,3 +1,4 @@
+import './time.component.css';
 import React, { Component } from 'react';
 import axios from 'axios';
 export default class Time extends Component {
@@ -64,12 +65,17 @@ export default class Time extends Component {
     let minutes = ('0' + (Math.floor(this.state.seconds / 60) % 60)).slice(-2)
     let seconds = ('0' + (this.state.seconds % 60)).slice(-2)
     return (
-      <div>
-        <p>
-          {this.state.title}  {hours}:{minutes}:{seconds}
+      <div className='Time-container'>
+        <p className='Time-title'>
+          {this.state.title} 
         </p>
-        <button onClick={() => {this.startTimer()}}>start</button>
-        <button onClick={() => {this.stopTime()}}>stop</button>
+        <p className='Time-display'>
+          {hours}:{minutes}:{seconds}
+        </p>
+        <div className='Button-container'>
+          <button className='Time-button' onClick={() => {this.startTimer()}}>start</button>
+          <button className='Time-button' onClick={() => {this.stopTime()}}>stop</button>
+        </div>
       </div>
     );
   }
