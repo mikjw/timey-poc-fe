@@ -17,8 +17,8 @@ export default class Time extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.id)
-    console.log(this.state.id)
+    console.log(this.props.id);
+    console.log(this.state.id);
   }
 
   startTimer() {
@@ -34,7 +34,7 @@ export default class Time extends Component {
 
   updateSeconds() {
     let secondsSinceStart = Math.round(Date.now() / 1000) - this.state.startTime;
-    let updatedSeconds = this.state.initialSeconds + secondsSinceStart
+    let updatedSeconds = this.state.initialSeconds + secondsSinceStart;
     this.setState({
       seconds: updatedSeconds
     })
@@ -61,11 +61,13 @@ export default class Time extends Component {
   }
 
   render() {
-    let hours = ('0' + (Math.floor(this.state.seconds / 3600) % 60)).slice(-2)
-    let minutes = ('0' + (Math.floor(this.state.seconds / 60) % 60)).slice(-2)
-    let seconds = ('0' + (this.state.seconds % 60)).slice(-2)
+    let hours = ('0' + (Math.floor(this.state.seconds / 3600) % 60)).slice(-2);
+    let minutes = ('0' + (Math.floor(this.state.seconds / 60) % 60)).slice(-2);
+    let seconds = ('0' + (this.state.seconds % 60)).slice(-2);
+    let containerClass = 'Time-container ';
+    this.state.counting ? containerClass += 'Not-counting': containerClass += 'Counting';
     return (
-      <div className='Time-container'>
+      <div className={containerClass}>
         <p className='Time-title'>
           {this.state.title} 
         </p>

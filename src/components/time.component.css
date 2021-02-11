@@ -12,6 +12,14 @@
   border-color: black;
 }
 
+.Counting {
+  background-color: rgb(245, 245, 245);
+}
+
+.Not-counting {
+  background-color: rgb(134, 248, 99);
+}
+
 .Time-title {
   font-size: 14px;
   color: rgb(66, 65, 65);
