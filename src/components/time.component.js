@@ -13,7 +13,6 @@ export default class Time extends Component {
       counting: false
     }
     this.updateSeconds=this.updateSeconds.bind(this);
-    this.startTimer=this.startTimer.bind(this);
   }
 
   componentDidMount() {
@@ -41,7 +40,7 @@ export default class Time extends Component {
     if (updatedSeconds % 5 === 0) {this.persistSeconds()}
   }
 
-  stopTime() {
+  stopTimer() {
     if (this.state.counting === true) {
       clearInterval(this.interval);
       this.persistSeconds();
@@ -57,7 +56,10 @@ export default class Time extends Component {
       seconds: this.state.seconds
     }
     axios.post('http://localhost:5001/times/update/' + this.state.id, time)
-    .then(res => console.log(res.data));
+    .then(res => console.log(res.data))
+    .catch(err => {
+      console.log(err);
+    });
   }
 
   render() {
@@ -65,7 +67,7 @@ export default class Time extends Component {
     let minutes = ('0' + (Math.floor(this.state.seconds / 60) % 60)).slice(-2);
     let seconds = ('0' + (this.state.seconds % 60)).slice(-2);
     let containerClass = 'Time-container ';
-    this.state.counting ? containerClass += 'Not-counting': containerClass += 'Counting';
+    this.state.counting ? containerClass += 'Not-counting' : containerClass += 'Counting';
     return (
       <div className={containerClass}>
         <p className='Time-title'>
@@ -76,7 +78,7 @@ export default class Time extends Component {
         </p>
         <div className='Button-container'>
           <button className='Time-button' onClick={() => {this.startTimer()}}>start</button>
-          <button className='Time-button' onClick={() => {this.stopTime()}}>stop</button>
+          <button className='Time-button' onClick={() => {this.stopTimer()}}>stop</button>
         </div>
       </div>
     );
