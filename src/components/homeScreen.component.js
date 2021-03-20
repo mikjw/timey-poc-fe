@@ -13,7 +13,10 @@ export default class HomeScreen extends Component {
   }
 
   async componentDidMount() {
-    await axios.get('http://localhost:5001/times')
+    const currentUserId = localStorage.getItem("userId");
+    await axios.get(`http://localhost:5001/times/user/${currentUserId}`, {
+      
+    })
     .then(response => {
       this.setState({ 
         times: response.data
@@ -35,13 +38,7 @@ export default class HomeScreen extends Component {
   }
 
   getTimesForWorkspace(id) {
-    let times = [];
-    this.state.times.forEach(time => {
-      if (time.workspace === id) {
-        times.push(time);
-      }
-    })
-    return times;
+    return this.state.times.filter(time => time.workspace === id);
   }
 
   listWorkspaces() { 
