@@ -47,13 +47,14 @@ export default class Time extends Component {
   }
 
   persistSeconds() {
-    const time = {
+    axios.post(`http://localhost:5001/times/update/${this.state.id}`, {
+      withCredentials: true,
       title: this.state.title,
-      seconds: this.state.seconds
-    }
-    axios.post('http://localhost:5001/times/update/' + this.state.id, time)
+      seconds: this.state.seconds, 
+      user: "6055f08eb68fd81414b9d041"
+    })
     .catch(err => {
-      console.log(err);
+      console.error(err);
     });
   }
 
