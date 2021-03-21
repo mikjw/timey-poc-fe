@@ -1,6 +1,6 @@
+import './login.component.css';
 import React, { Component } from 'react';
 import axios from 'axios';
-
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -8,7 +8,6 @@ export default class Login extends Component {
       email: "",
       password: ""
     }
-
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
     this.submitForm = this.submitForm.bind(this);
@@ -30,16 +29,19 @@ export default class Login extends Component {
       })
       .then(res => {
         console.log(res.data);
+        if (res.data.id && res.data.message === 'success') {
+          localStorage.setItem('userId', res.data.id)
+          this.props.history.push('/times');
+        }
       });
   }
 
-getUser() {
-  axios.get('http://localhost:5001/requser', {
-    withCredentials: true
-  })
-  .then((res) => {
-      this.setState({requser: res.data});
-      console.log('this.state.requser: ', this.state.requser);
+  getUser() {
+    axios.get('http://localhost:5001/requser', {
+      withCredentials: true
+    })
+    .then((res) => {
+        this.setState({requser: res.data});
     });
   };
 
@@ -50,11 +52,11 @@ getUser() {
         <h1>
           Login
         </h1>
-          <label> Email: </label> 
-            <input type="text" name="email" value={this.state.email} onChange={this.onChangeEmail} />
-          <label> Password: </label> 
-            <input type="password" name="password" value={this.state.password} onChange={this.onChangePassword} /> 
-          <button onClick={() => {this.submitForm()}}>Submit</button>
+          <label className="Login-label"> Email: </label> 
+            <input className="Login-input" type="text" name="email" value={this.state.email} onChange={this.onChangeEmail} />
+          <label className="Login-label"> Password: </label> 
+            <input className="Login-input" type="password" name="password" value={this.state.password} onChange={this.onChangePassword} /> 
+          <button className="Login-button" onClick={() => {this.submitForm()}}>✓</button>
         </div>
         <div>
         <h1>
