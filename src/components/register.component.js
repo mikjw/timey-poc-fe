@@ -8,7 +8,6 @@ export default class Register extends Component {
       email: "",
       password: ""
     }
-
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
     this.submitForm = this.submitForm.bind(this);
@@ -22,12 +21,16 @@ export default class Register extends Component {
     this.setState({password: e.target.value});
   }
 
-  submitForm(e) {
-      axios.post('http://localhost:5001/register', {
-        email: this.state.email,
-        password: this.state.password
-      })
-      .then(res => console.log(res.data));
+  submitForm() {
+    axios.post('http://localhost:5001/register', {
+      email: this.state.email,
+      password: this.state.password
+    })
+    .then(res => {
+      if (res.data.message === "success") {
+        this.props.history.push('/login');
+      }
+    })
   }
 
   render() {
