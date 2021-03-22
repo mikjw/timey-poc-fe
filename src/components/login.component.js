@@ -36,15 +36,6 @@ export default class Login extends Component {
       });
   }
 
-  getUser() {
-    axios.get('http://localhost:5001/requser', {
-      withCredentials: true
-    })
-    .then((res) => {
-        this.setState({requser: res.data});
-    });
-  };
-
   render() {
     return (
       <div>
