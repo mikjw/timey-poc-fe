@@ -1,0 +1,27 @@
+:root {
+  --greytext: #c4c4c4;
+}
+
+.Login-label{
+  color: var(--greytext);
+}
+
+.Login-button {
+  border-style: solid;
+  border-color: transparent;
+  background-color: transparent;
+  font-size: 16px;
+  color: var(--greytext);
+}
+
+.Login-input {
+  width: 150px; 
+  height: 20px;
+  border-style: dotted;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: var(--greytext);
+  background-color: transparent;
+  color: var(--greytext);
+  margin: 10px;
+}

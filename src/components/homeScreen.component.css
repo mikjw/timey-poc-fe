@@ -1,8 +1,25 @@
-.Homescreen {
-}
-
 .Homescreen-workspace-container {
   max-width: 330%;
   float: left;
   margin: 25px;
+}
+
+.New-workspace-form {
+  width: 150px; 
+  height: 20px;
+  border-style: dotted;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: var(--greytext);
+  background-color: transparent;
+  color: var(--greytext);
+  margin: 10px;
+}
+
+.New-workspace-button {
+  border-style: solid;
+  border-color: transparent;
+  background-color: transparent;
+  font-size: 16px;
+  color: var(--greytext);
 }
