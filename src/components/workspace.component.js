@@ -10,7 +10,8 @@ export default class Workspace extends Component {
       id: this.props.id,
       name: this.props.name,
       times: this.props.times,
-      newTimer: ""
+      newTimer: ''
+
     }
     this.onChangeTimerTitle = this.onChangeTimerTitle.bind(this);
     this.deleteTimer = this.deleteTimer.bind(this);
@@ -21,25 +22,24 @@ export default class Workspace extends Component {
   }
 
   async createTimer() {
-    let id = "";
-    const currentUserId = localStorage.getItem("userId");
+    let id = '';
     await axios.post('http://localhost:5001/times/add', {
       withCredentials: true,
       title: this.state.newTimer,
       seconds: 0,
       workspace: this.state.id,
-      user: currentUserId
+      user: localStorage.getItem("userId")
     })
     .then(res => {
       id = res.data;
     })
     
-    await axios.get(`http://localhost:5001/times/${id}`)
+    axios.get(`http://localhost:5001/times/${id}`)
     .then(res => {
       const time = res.data;
       this.setState({ 
         times: [...this.state.times, time], 
-        newTimer: ""
+        newTimer: ''
       })
     })
     .catch(err => {
@@ -47,7 +47,7 @@ export default class Workspace extends Component {
     })
 
     this.setState({
-      newTimer: ""
+      newTimer: ''
     })
   }
 
@@ -76,10 +76,10 @@ export default class Workspace extends Component {
           {this.state.name}
         </div>
         <div className='Time-list-container'>
-        {this.listTimes()}
+          {this.listTimes()}
         </div>
         <div>
-        <input class="New-timer-form" type="text" name="Title" value={this.state.newTimer} placeholder="New timer title..." onChange={this.onChangeTimerTitle} />
+          <input className='New-timer-form' type='text' name='Title' value={this.state.newTimer} placeholder='New timer title...' onChange={this.onChangeTimerTitle} />
           <button className='New-timer-button' onClick={() => {this.createTimer()}}>+</button>
         </div>
       </div>

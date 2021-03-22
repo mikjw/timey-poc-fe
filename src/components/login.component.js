@@ -5,8 +5,8 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: ""
+      email: '',
+      password: ''
     }
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
@@ -52,17 +52,11 @@ export default class Login extends Component {
         <h1>
           Login
         </h1>
-          <label className="Login-label"> Email: </label> 
-            <input className="Login-input" type="text" name="email" value={this.state.email} onChange={this.onChangeEmail} />
-          <label className="Login-label"> Password: </label> 
-            <input className="Login-input" type="password" name="password" value={this.state.password} onChange={this.onChangePassword} /> 
-          <button className="Login-button" onClick={() => {this.submitForm()}}>✓</button>
-        </div>
-        <div>
-        <h1>
-          Get user
-        </h1>
-          <button onClick={() => {this.getUser()}}>Submit</button>
+          <label className='Login-label'> Email: </label> 
+            <input className='Login-input' type='text' name='email' value={this.state.email} onChange={this.onChangeEmail} />
+          <label className='Login-label'> Password: </label> 
+            <input className='Login-input' type='password' name='password' value={this.state.password} onChange={this.onChangePassword} /> 
+          <button className='Login-button' onClick={() => {this.submitForm()}}>✓</button>
         </div>
       </div>
     );

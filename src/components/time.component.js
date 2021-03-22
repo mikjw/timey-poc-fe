@@ -51,7 +51,7 @@ export default class Time extends Component {
       withCredentials: true,
       title: this.state.title,
       seconds: this.state.seconds, 
-      user: "6055f08eb68fd81414b9d041"
+      user: localStorage.getItem('userId')
     })
     .catch(err => {
       console.error(err);
@@ -65,7 +65,7 @@ export default class Time extends Component {
     let dotClass = 'Dot ';
     this.state.counting ? dotClass += 'Counting' : dotClass += 'Not-counting';
     return (
-      <div className="Time-container">
+      <div className='Time-container'>
         <div class={dotClass}></div>
         <p className='Time-title'>
           {this.state.title} 

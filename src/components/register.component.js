@@ -5,8 +5,8 @@ export default class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: ""
+      email: '',
+      password: ''
     }
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
@@ -27,7 +27,7 @@ export default class Register extends Component {
       password: this.state.password
     })
     .then(res => {
-      if (res.data.message === "success") {
+      if (res.data.message === 'success') {
         this.props.history.push('/login');
       }
     })
@@ -40,9 +40,9 @@ export default class Register extends Component {
           Register
         </h1>
           <label> Email: </label> 
-            <input type="text" name="email" value={this.state.email} onChange={this.onChangeEmail} />
+            <input type='text' name='email' value={this.state.email} onChange={this.onChangeEmail} />
           <label> Password: </label> 
-            <input type="password" name="password" value={this.state.password} onChange={this.onChangePassword} /> 
+            <input type='password' name='password' value={this.state.password} onChange={this.onChangePassword} /> 
           <button onClick={() => {this.submitForm()}}>Submit</button>
       </div>
     );
