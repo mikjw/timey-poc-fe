@@ -16,6 +16,11 @@ export default class Time extends Component {
     this.updateSeconds=this.updateSeconds.bind(this);
   }
 
+
+/**
+ * Begin incrementing seconds and store start value 
+ */
+
   startTimer() {
     if (this.state.counting === false) {
       this.setState({
@@ -27,6 +32,11 @@ export default class Time extends Component {
     }
   }
 
+
+  /**
+   * Get difference from start value and add to seconds   
+   */
+
   updateSeconds() {
     let secondsSinceStart = Math.round(Date.now() / 1000) - this.state.startTime;
     let updatedSeconds = this.state.initialSeconds + secondsSinceStart;
@@ -35,6 +45,11 @@ export default class Time extends Component {
     })
     if (updatedSeconds % 5 === 0) {this.persistSeconds()}
   }
+
+
+  /**
+   * Stop incrementing and save seconds 
+   */
 
   stopTimer() {
     if (this.state.counting === true) {
@@ -45,6 +60,11 @@ export default class Time extends Component {
       })
     }
   }
+
+
+  /**
+   * Send updated seconds to back end 
+   */
 
   persistSeconds() {
     axios.post(`http://localhost:5001/times/update/${this.state.id}`, {
@@ -66,7 +86,7 @@ export default class Time extends Component {
     this.state.counting ? dotClass += 'Counting' : dotClass += 'Not-counting';
     return (
       <div className='Time-container'>
-        <div class={dotClass}></div>
+        <div className={dotClass}></div>
         <p className='Time-title'>
           {this.state.title} 
         </p>

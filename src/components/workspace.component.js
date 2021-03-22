@@ -21,6 +21,11 @@ export default class Workspace extends Component {
     this.setState({newTimer: e.target.value});
   }
 
+
+  /**
+   * Create new timer, send to back end, then append to timers array 
+   */
+
   async createTimer() {
     let id = '';
     await axios.post('http://localhost:5001/times/add', {
@@ -33,7 +38,8 @@ export default class Workspace extends Component {
     .then(res => {
       id = res.data;
     })
-    
+
+    // Query to get new timer with all props
     axios.get(`http://localhost:5001/times/${id}`)
     .then(res => {
       const time = res.data;
@@ -45,11 +51,12 @@ export default class Workspace extends Component {
     .catch(err => {
       console.log(err);
     })
-
-    this.setState({
-      newTimer: ''
-    })
   }
+
+
+  /**
+   * Delete timer from database and remove from timers array
+   */
 
   deleteTimer(id) {
     axios.delete(`http://localhost:5001/times/${id}`, {
@@ -62,6 +69,11 @@ export default class Workspace extends Component {
       })
     });
   }
+
+  
+  /**
+   * Return a timer component for each timer in array
+   */
     
   listTimes() {
     return this.state.times.map(el => {
