@@ -12,6 +12,11 @@ export default class HomeScreen extends Component {
     }
   }
 
+  
+  /**
+   * Fetch time and workspace records for user and add to state
+   */
+
   async componentDidMount() {
     const currentUserId = localStorage.getItem("userId");
     await axios.get(`http://localhost:5001/times/user/${currentUserId}`, {
@@ -37,9 +42,19 @@ export default class HomeScreen extends Component {
     })
   }
 
+
+  /**
+   * Get times associated with a given record param
+   */
+
   getTimesForWorkspace(id) {
     return this.state.times.filter(time => time.workspace === id);
   }
+
+
+  /**
+   * Iterate through workspaces and return a Workspace component for each
+   */
 
   listWorkspaces() { 
     return this.state.workspaces.map(el => {
@@ -50,7 +65,7 @@ export default class HomeScreen extends Component {
 
   render() {
     return (
-      <div className="Homescreen">
+      <div className='Homescreen'>
         <div>
           {this.listWorkspaces()}
         </div>
