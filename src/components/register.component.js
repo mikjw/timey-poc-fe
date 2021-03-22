@@ -36,14 +36,14 @@ export default class Register extends Component {
   render() {
     return (
       <div>
-        <h1>
+        <div className='Login-header'>
           Register
-        </h1>
+        </div>
           <label className='Login-label'> Email: </label> 
             <input className='Login-input' type='text' name='email' value={this.state.email} onChange={this.onChangeEmail} />
           <label className='Login-label'> Password: </label> 
             <input className='Login-input' type='password' name='password' value={this.state.password} onChange={this.onChangePassword} /> 
-          <button onClick={() => {this.submitForm()}}>Submit</button>
+          <button className='Login-button' onClick={() => {this.submitForm()}}>✓</button>
       </div>
     );
   }

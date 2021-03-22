@@ -49,14 +49,16 @@ export default class Login extends Component {
     return (
       <div>
         <div>
-        <h1>
-          Login
-        </h1>
+        <div className='Login-header'>
+          Log in
+        </div>
+        <div className='Login-container'>
           <label className='Login-label'> Email: </label> 
-            <input className='Login-input' type='text' name='email' value={this.state.email} onChange={this.onChangeEmail} />
+          <input className='Login-input' type='text' name='email' value={this.state.email} onChange={this.onChangeEmail} />
           <label className='Login-label'> Password: </label> 
-            <input className='Login-input' type='password' name='password' value={this.state.password} onChange={this.onChangePassword} /> 
+          <input className='Login-input' type='password' name='password' value={this.state.password} onChange={this.onChangePassword} /> 
           <button className='Login-button' onClick={() => {this.submitForm()}}>✓</button>
+        </div>
         </div>
       </div>
     );
