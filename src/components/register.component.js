@@ -22,7 +22,7 @@ export default class Register extends Component {
   }
 
   submitForm() {
-    axios.post('http://localhost:5001/register', {
+    axios.post(`${process.env.REACT_APP_TIMEY_API_BASE_URL}/register`, {
       email: this.state.email,
       password: this.state.password
     })

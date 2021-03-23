@@ -67,7 +67,7 @@ export default class Time extends Component {
    */
 
   persistSeconds() {
-    axios.post(`http://localhost:5001/times/update/${this.state.id}`, {
+    axios.post(`${process.env.REACT_APP_TIMEY_API_BASE_URL}/times/update/${this.state.id}`, {
       withCredentials: true,
       title: this.state.title,
       seconds: this.state.seconds, 

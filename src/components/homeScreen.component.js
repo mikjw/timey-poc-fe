@@ -19,7 +19,7 @@ export default class HomeScreen extends Component {
 
   async componentDidMount() {
     const currentUserId = localStorage.getItem("userId");
-    await axios.get(`http://localhost:5001/times/user/${currentUserId}`, {
+    await axios.get(`${process.env.REACT_APP_TIMEY_API_BASE_URL}/times/user/${currentUserId}`, {
       
     })
     .then(response => {
@@ -31,7 +31,7 @@ export default class HomeScreen extends Component {
       console.log(error);
     })
     
-    await axios.get('http://localhost:5001/workspaces')
+    await axios.get(`${process.env.REACT_APP_TIMEY_API_BASE_URL}/workspaces`)
     .then(response => {
       this.setState({ 
         workspaces: response.data

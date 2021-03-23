@@ -22,7 +22,7 @@ export default class Login extends Component {
   }
 
   submitForm(e) {
-      axios.post('http://localhost:5001/login', {
+      axios.post(`${process.env.REACT_APP_TIMEY_API_BASE_URL}/login`, {
         withCredentials: true,
         email: this.state.email,
         password: this.state.password
