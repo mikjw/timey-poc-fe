@@ -28,7 +28,7 @@ export default class Workspace extends Component {
 
   async createTimer() {
     let id = '';
-    await axios.post(`${process.env.REACT_APP_TIMEY_API_BASE_URL}/add`, {
+    await axios.post(`${process.env.REACT_APP_TIMEY_API_BASE_URL}/times/add`, {
       withCredentials: true,
       title: this.state.newTimer,
       seconds: 0,
@@ -40,7 +40,7 @@ export default class Workspace extends Component {
     })
 
     // Query to get new timer with all props
-    axios.get(`${process.env.REACT_APP_TIMEY_API_BASE_URL}/${id}`)
+    axios.get(`${process.env.REACT_APP_TIMEY_API_BASE_URL}/times/${id}`)
     .then(res => {
       const time = res.data;
       this.setState({ 
@@ -59,7 +59,7 @@ export default class Workspace extends Component {
    */
 
   deleteTimer(id) {
-    axios.delete(`${process.env.REACT_APP_TIMEY_API_BASE_URL}/${id}`, {
+    axios.delete(`${process.env.REACT_APP_TIMEY_API_BASE_URL}/times/${id}`, {
       withCredentials: true,
     })
     .then(res => {    
@@ -83,7 +83,7 @@ export default class Workspace extends Component {
  
   render() {
     return (
-      <div>
+      <div className='Workspace-container'>
         <div className='Workspace-name'>
           {this.state.name}
         </div>
