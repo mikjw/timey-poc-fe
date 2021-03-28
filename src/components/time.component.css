@@ -20,6 +20,11 @@
   background-color: black;
 }
 
+.Time-container:hover {
+  border-color:var(--header);
+  color: var(--header);
+}
+
 .Dot {
   height: 15px;
   width: 15px;
@@ -40,13 +45,15 @@
 
 .Time-title {
   font-size: 14px;
-  color: var(--greytext);
+}
+
+.Time-title:hover {
+  font-size: 14px;
 }
 
 .Time-display {
   margin: 2px;
   font-size: 22px;
-  color: var(--header);
 }
 
 .Button-container {
@@ -61,7 +68,13 @@
   margin: 2px;
   padding: 5px 10px 5px 10px;
   font-size: 11px;
-  color:var(--white);
+  border-color: var(--greytext);
+  color: var(--greytext);
+}
+
+.Time-button:hover {
+  border-color: var(--header);
+  color: var(--header);
 }
 
 .Delete-timer-button {
@@ -75,4 +88,6 @@
   bottom: 120px;
 }
 
-
+.Delete-timer-button:hover {
+  color: var(--header);
+}
